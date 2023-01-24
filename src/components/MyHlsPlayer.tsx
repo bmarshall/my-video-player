@@ -1,10 +1,11 @@
 
 import { useEffect, useRef, } from "react";
-import { loadMasterPlaylist } from "../MyHlsPlayer/MyHlsPlayer";
+import { loadMasterPlaylist, parseMasterPlaylist } from "../MyHlsPlayer/MyHlsPlayer";
 
 
 const VIDEO_ELEMENT_ID = 'MyHlsPlayer'
 const VIDEO_SOURCE = 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8';
+
 
 export const MyHlsPlayer = () => {
 
@@ -14,6 +15,7 @@ export const MyHlsPlayer = () => {
         const setupPlayer = async () => {
             const masterPlaylist = await loadMasterPlaylist(VIDEO_SOURCE);
             console.log(masterPlaylist);
+            parseMasterPlaylist(masterPlaylist, 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/');
             
         }
         setupPlayer();
